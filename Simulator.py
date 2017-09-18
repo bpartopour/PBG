@@ -1,4 +1,4 @@
-##Packed-Bed generation module (Version-Beta)
+##Packed-Bed generation module (Version-BAeta)
 ##BPartopour, AG Dixon†
 ##Heat and Mass Transfer Lab
 ##Worcester Polytechnic Institute
@@ -12,15 +12,17 @@ import parameters
 def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     from Rigidbody_generator import part_generation
     import numpy as np
-    co_max = 0.7*parameters.cyl_radius - parameters.particle_radius
+    co_max = 0.6*parameters.cyl_radius - parameters.particle_radius
     co_min = -1.0 * co_max
-    top = round(parameters.cyl_depth/2)-7
+    top = round(parameters.cyl_depth/2)
     interval =  parameters.particle_radius
     x_y_range = list(np.arange(co_min,co_max,interval))
     phi_range = list(np.arange(0.0,6.28,0.5))
-    pellet = {'sphere' : 0, 'cylinder' : 1, 'Rashig Ring':2, 'f_point_star':3, 'four_holes':4, 'three_holes':5, 'tri_lobes': 6}
+    pellet = {'sphere' : 0, 'cylinder' : 1, 'Raschig Ring':2, 'f_point_star':3, 'four_holes':4, 'three_holes':5, 'tri_lobes': 6, 'quadrilobes' : 7, 'four_hole_sphere' :8}
     pellet_key = pellet[Particle_type]
     simulation_current_frame = 1
+#    scene = bpy.context.scene
+#    fp = scene.render.filepath
     if pellet_key == 4:
         from fh import four_holes_coor
         vectors = four_holes_coor()
@@ -29,11 +31,14 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
         vectors = three_holes_coor()
     else:
         vectors=[]
+    i = 0
     for i in range(last_particle_drop_frame):
         if (simulation_current_frame % 10) == 0.0:
             part_generation(pellet_key,x_y_range,phi_range,top,vectors)
-       
+        
         bpy.context.scene.frame_set(frame = simulation_current_frame)
+#        scene.render.filepath = fp + str(i+1)
+#        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
     return(simulation_current_frame)
     
@@ -51,6 +56,9 @@ def steady_state(simulation_current_frame):
     z_prev = [0]*size
     d = [1]*size
     Stop = False
+ #   scene = bpy.context.scene
+ #   fp = scene.render.filepath
+ #   i = simulation_current_frame
     while ( Stop == False ):
             
         i = 0
@@ -63,6 +71,8 @@ def steady_state(simulation_current_frame):
         if max(d) < 0.01:
             Stop = True
         bpy.context.scene.frame_set(frame = simulation_current_frame)
+#        scene.render.filepath = fp + str(simulation_current_frame)
+#        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
 
     return(d)

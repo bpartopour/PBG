@@ -1,8 +1,11 @@
-##Packed-Bed generation module (Version-Beta)
-##BPartopour, AG Dixon†
-##Heat and Mass Transfer Lab
-##Worcester Polytechnic Institute
+##
 
+print('#######################',"\n"
+      "Packed-Bed generation module (Version-Beta)","\n"
+      "by BPartopour, AG Dixon†", "\n"
+      "Heat and Mass Transfer Lab","\n"
+      "Worcester Polytechnic Institute","\n"
+)
 #Main Program
 import bpy 
 import parameters
@@ -37,7 +40,10 @@ tube_generation(cyl_radius, cyl_depth)
 
 bpy.context.scene.frame_end = 50000
 bpy.context.scene.rigidbody_world.point_cache.frame_end = 50000
-last_particle_drop_frame = int((number_of_particle / 5) * 10)
+if cyl_radius < 5:
+    last_particle_drop_frame = int((number_of_particle)*10)
+else: 
+    last_particle_drop_frame = int((number_of_particle / 5) * 10)
 
 #generating the particles and filling up the tube
 print("Filling up the bed....")
@@ -63,9 +69,9 @@ if parameters.angle_dist == True:
     
     
 #to export the bed uncomment the next 2 lines: 
-#bpy.ops.object.select_all(action = 'TOGGLE')
+bpy.ops.object.select_all(action = 'TOGGLE')
 print("Exporting the geometry as a STL file...")
-bpy.ops.export_mesh.stl(filepath=parameters.file_path, check_existing=True, axis_forward='Y', axis_up='Z', filter_glob= ".STL", use_selection=False, global_scale=1, use_scene_unit=False, ascii=False, use_mesh_modifiers=True, batch_mode='OFF')
+bpy.ops.export_mesh.stl(filepath=parameters.file_path, check_existing=True, axis_forward='Y', axis_up='Z', filter_glob= ".STL", global_scale=1, ascii=False, use_mesh_modifiers=True)
 
 #radial porosity measurment
 decision = ''
