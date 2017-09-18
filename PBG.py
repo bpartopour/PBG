@@ -1,8 +1,8 @@
 ##
 
 print('*******************************************',"\n"
-      "Packed-Bed generation module (v-1.1","\n"
-      "by BPartopour, AG Dixon†", "\n"
+      "Packed bed generator module (v-1.1)","\n"
+      "by B Partopour & AG Dixon†", "\n"
       "Heat and Mass Transfer Lab","\n"
       "Worcester Polytechnic Institute","\n"
       "Reference : https://doi.org/10.1016/j.powtec.2017.09.009","\n"
