@@ -20,5 +20,6 @@ To run the simulation interactively in Blender:
   Remove all the objects in the scene, icluding Camera and Light  
   Change to scripting mode  
   Open PBG.py   
-  Run the script   
+  Run the script     
   
+If you are using this package for research or work make sure you refer to our [paper](https://doi.org/10.1016/j.powtec.2017.09.009)
