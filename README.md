@@ -1,5 +1,5 @@
 # PBG
-PBG is working based on [Blender](https://www.blender.org/foundation)  therefore, Blender 2.77 or a later version is required.
+PBG works based on [Blender](https://www.blender.org/foundation)  therefore, Blender 2.77 or a later version is required.
 
 
 Input parameters should be adjusted in [parameters.py](https://github.com/bpartopour/PBG/blob/master/parameters.py). 
