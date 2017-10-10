@@ -17,7 +17,7 @@ To run the simulation in Console/Terminal (Win or Mac):
 
 To run the simulation interactively in Blender:  
   Run Blender.exe   
-  Remove all the objects in the scene, icluding Camera and Light  
+  Remove all the objects in the scene, including Camera and Light  
   Change to scripting mode  
   Open PBG.py   
   Run the script     
