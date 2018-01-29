@@ -1,4 +1,7 @@
 # PBG
+
+NOTE: Please download files from bpartopour-patch-1. The files in master branch are not working for now!
+
 PBG works based on [Blender](https://www.blender.org/foundation)  therefore, Blender 2.77 or a later version is required.
 
 
