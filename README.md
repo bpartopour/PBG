@@ -27,6 +27,7 @@ To run the simulation interactively in Blender:
   Run the script     
   
 To run the capping.py from Console/Terminal:
+
   Make sure you are in the right directory  
   Type: blender -b \\working_bed_X.blend -P Capping.py 
   
