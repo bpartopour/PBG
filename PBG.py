@@ -69,9 +69,12 @@ if parameters.angle_dist == True:
     angle_distribution(file_name)
     
     
+#Saving the blender file to have the packing with seperated particles
+print("Saving a copy of the packing...")
+bpy.ops.wm.save_as_mainfile(filepath = parameters.blender_file_path)
     
 #to export the bed uncomment the next 2 lines: 
-bpy.ops.object.select_all(action = 'TOGGLE')
+#bpy.ops.object.select_all(action = 'TOGGLE')
 print("Exporting the geometry as a STL file...")
 bpy.ops.export_mesh.stl(filepath=parameters.file_path, check_existing=True, axis_forward='Y', axis_up='Z', filter_glob= ".STL", global_scale=1, ascii=False, use_mesh_modifiers=True)
 

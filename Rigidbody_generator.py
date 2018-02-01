@@ -18,12 +18,12 @@ z=[]
 def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
 
     from Rashig_ring import Rashig_ring
-    from fpoint_star import fpoint_star
-    from three_holes import three_holes_generator
-    from fh import four_hole_generator
-    from tri_lobes import tri_lobes_generator
-    from quadrilobes import quadrilobes_generator
-    from spheres_fh import sphere_4holes_generator
+    #from fpoint_star import fpoint_star
+    #from three_holes import three_holes_generator
+    #from fh import four_hole_generator
+    #from tri_lobes import tri_lobes_generator
+    #from quadrilobes import quadrilobes_generator
+    #from spheres_fh import sphere_4holes_generator
 
     if len(x_y_range) < 5:
         pop_2 = list(np.arange(-1,1,0.3))
@@ -34,7 +34,7 @@ def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
         x = random.sample(x_y_range, 5)
         y = random.sample(x_y_range, 5)
         numb = 5
-    z = random.sample(range(top,top+6),5) 
+    z = random.sample(range(top, top + 8),5)
     x_r = random.sample(phi_range, 5)
     y_r = random.sample(phi_range, 5)
     z_r = random.sample(phi_range, 5) 
@@ -62,19 +62,19 @@ def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
                         depth = parameters.particle_length,
                         location = (x[i], y[i], z[i]),
                         rotation = (x_r[i], y_r[i], z_r[i]))
-        elif pellet_key == 3:
-            fpoint_star()
-
-        elif pellet_key == 4:
-            four_hole_generator(vectors, x,y,z,x_r,y_r,z_r,i)
-        elif pellet_key == 5:
-            three_holes_generator(vectors, x, y,z,x_r,y_r,z_r,i)
-        elif pellet_key == 6:
-            tri_lobes_generator(parameters.particle_length, x, y, z, x_r, y_r, z_r,i)
-        elif pellet_key == 7:
-            quadrilobes_generator(parameters.particle_length, x, y, z, x_r, y_r, z_r,i)
-        elif pellet_key == 8:
-            sphere_4holes_generator(x,y,z,x_r,y_r,z_r,i)
+                        #elif pellet_key == 3:
+                        #            fpoint_star()
+                        #
+                        #        elif pellet_key == 4:
+                        #            four_hole_generator(vectors, x,y,z,x_r,y_r,z_r,i)
+                        #        elif pellet_key == 5:
+                        #            three_holes_generator(vectors, x, y,z,x_r,y_r,z_r,i,radi = parameters.particle_radius)
+                        #       elif pellet_key == 6:
+                        #           tri_lobes_generator(parameters.particle_length, x, y, z, x_r, y_r, z_r,i)
+                        #       elif pellet_key == 7:
+                        #           quadrilobes_generator(parameters.particle_length, x, y, z, x_r, y_r, z_r,i)
+                        #       elif pellet_key == 8:
+                        #           sphere_4holes_generator(x,y,z,x_r,y_r,z_r,i)
         bpy.ops.rigidbody.objects_add(type='ACTIVE')
         obj = bpy.context.object.rigid_body
         obj.enabled = True
@@ -114,10 +114,13 @@ def tube_generation(cyl_radius, cyl_depth):
     bpy.ops.rigidbody.object_add(type = 'PASSIVE')
     obj = bpy.context.object.rigid_body
     obj.collision_shape = 'MESH'
-    obj.friction = 0.05
-    obj.restitution = 0.5
+    obj.friction = 0.1
+    obj.restitution = 0.1
+    obj.use_margin = parameters.use_margin
+    obj.collision_margin = parameters.collision_margin
     #activating split impulse
     bpy.context.scene.rigidbody_world.enabled = True
     bpy.context.scene.rigidbody_world.use_split_impulse = True
-    bpy.context.scene.rigidbody_world.steps_per_second = 300
-    bpy.context.scene.rigidbody_world.solver_iterations = 50
+    bpy.context.scene.rigidbody_world.steps_per_second = 200
+    bpy.context.scene.rigidbody_world.solver_iterations = 200
+    

@@ -6,23 +6,23 @@
 #Defining parameters for the simulation 
 
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'f_point_star', 'three_holes', 'four_holes', 'tri_lobes', 'quadrilobes', 'four_hole_sphere'
-Particle_type = 'Raschig Ring'
+Particle_type = 'sphere'
 
 ##Tube's dimensions
 # Raduis of the Tube
-cyl_radius = 10.5
+cyl_radius = 6
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
-cyl_depth = 200
+cyl_depth = 50
 
 
 ## Particles Properties
 #Number of Particles
-number_of_particle = 300
+number_of_particle = 70
 #Particle radius !! in case of Rashig Ring this is outer radius
-particle_radius = 2.25
+particle_radius = 1
 #particle innter radius for extruded geometries
-particle_inner_radius = 0.55
+particle_inner_radius = 0.6
 #Particle Length (for cylinders, in case of spheres leave it as default)
 particle_length = 4.5
 
@@ -31,9 +31,9 @@ particle_length = 4.5
 #Collision Shape, valid types: 'MESH', 'CONVEX_HULL', 'SPHERE'
 collision_shape = 'CONVEX_HULL'
 #Surface Friction Factor ( 0 < friction_factor < 1 )
-friction_factor = 0.1
+friction_factor = 0.2
 #Surface Restitution Factor (0 < restitution_factor < 1)
-restitution_factor = 0.88
+restitution_factor = 0.2
 #Usinig Coloision Margin: Yes (True), NO (False)
 use_margin = True
 #Colosion margin (lower value = more accuracy, 0 perfect value)
@@ -51,9 +51,12 @@ remove_the_tube = True
 #Do you want to calculate the angle distribution of the particles after the bed is generated?
 angle_dist = True
 #Where do you want to save the angle_dist results?
-file_name ='C:\\Angle_distribu_1200.txt'
-
+file_name ='500_fh_N=6.txt'
+#Where to save the blender working file? this file gives access to the packing with discrete particles
+blender_file_path = "\\working_bed_X.blend"
 ## Stl Export properties
-file_path = "spheres_4hole_N=6_1200.stl"
+file_path = "500_tri_N=4.7.stl"
+## Stl Export for capped geometry in case of spherical particles
+file_path_capped = "\capped_bed.stl"
 ## Where do you want to save the radial voidage results?
-file_path_2 = "radial_N=6_1200.txt"
+file_path_2 = "500_fh_N=6.txt"
