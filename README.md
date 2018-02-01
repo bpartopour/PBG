@@ -1,6 +1,6 @@
-# PBG
+# PBG V.2
 
-NOTE: Please download files from bpartopour-patch-1. The files in master branch are not working for now!
+
 
 PBG works based on [Blender](https://www.blender.org/foundation)  therefore, Blender 2.77 or a later version is required.
 
@@ -12,11 +12,12 @@ In online version only a few particle shapes are available. To access other shap
 Download all the files and place all except [empty.blend](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [PBG.py](https://github.com/bpartopour/PBG/blob/master/empty.blend) in:  
   Blender/Contents/Resources/2.78/scripts/modules.  
   
-Place [empty.blend](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [PBG.py](https://github.com/bpartopour/PBG/blob/master/empty.blend) in your working directory.   
+Place [empty.blend](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [PBG.py](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [Capping.py](https://github.com/bpartopour/PBG/blob/master/Capping.py) in your working directory.   
 
 To run the simulation in Console/Terminal (Win or Mac):   
   Make sure you are in the right directory  
-  Type: blender -b empty.blend -P PBG.py   
+  Type: blender -b empty.blend -P PBG.py 
+  
 
 To run the simulation interactively in Blender:  
   Run Blender.exe   
@@ -25,4 +26,10 @@ To run the simulation interactively in Blender:
   Open PBG.py   
   Run the script     
   
+To run the capping.py from Console/Terminal:
+  Make sure you are in the right directory  
+  Type: blender -b \\working_bed_X.blend -P Capping.py 
+  
+  
 If you are using this package for research or work make sure you refer to our [paper](https://doi.org/10.1016/j.powtec.2017.09.009)
+
