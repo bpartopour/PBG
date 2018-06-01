@@ -52,7 +52,7 @@ print("Filling up the bed....")
 simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
 
 bpy.ops.object.select_by_type( type = 'MESH')
-#continueing the simulation till steady-state (condition: max particle velocity < 0.01)
+#continuing the simulation till steady-state (condition: max particle velocity < 0.01)
 print("Reaching the steady_state condition")
 distance=steady_state(simulation_current_frame)
 bpy.ops.object.select_all(action = 'TOGGLE')#removing the container
@@ -63,13 +63,13 @@ if parameters.remove_the_tube == True:
 #Do we want to get the angle distribution? if so, in parameters.py set the angle_dist to True
 
 if parameters.angle_dist == True:
-    print("Calculating the particles angle distributiions in the bed...")
+    print("Calculating the particles angle distributions in the bed...")
     bpy.ops.object.select_by_type( type = 'MESH')
     file_name = parameters.file_name
     angle_distribution(file_name)
     
     
-#Saving the blender file to have the packing with seperated particles
+#Saving the blender file to have the packing with separated particles
 print("Saving a copy of the packing...")
 bpy.ops.wm.save_as_mainfile(filepath = parameters.blender_file_path)
     
