@@ -9,8 +9,19 @@ print('*******************************************',"\n"
       '*********************************************'
 )
 #Main Program
-import bpy 
+
+#Import arguments - allow user to specify parameter file location
+import sys
+argv = sys.argv
+if "--" in argv: #Look for optional filepath argument
+	paramfile = argv[argv.index("--") + 1]  # get first argument after "--" 
+	import os
+	sys.path.append(os.path.dirname(os.path.expanduser(paramfile))) #Add filepath to system path
+	print(os.path.dirname(os.path.expanduser(paramfile)), "added to system path.")
+
 import parameters
+
+import bpy 
 import importlib
 from radial_voidage import radial_voidage
 from Rigidbody_generator import tube_generation
