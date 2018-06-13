@@ -10,14 +10,11 @@ print('*******************************************',"\n"
 )
 #Main Program
 
-#Import arguments - allow user to specify parameter file location
 import sys
-argv = sys.argv
-if "--" in argv: #Look for optional filepath argument
-	paramfile = argv[argv.index("--") + 1]  # get first argument after "--" 
-	import os
-	sys.path.append(os.path.dirname(os.path.expanduser(paramfile))) #Add filepath to system path
-	print(os.path.dirname(os.path.expanduser(paramfile)), "added to system path.")
+import os
+CurrentDir = os.getcwd()	#get directory in which PBG.py is stored
+sys.path.append(CurrentDir) #Add filepath to system path
+print(CurrentDir, "added to system path.") #Report to user
 
 import parameters
 
@@ -36,8 +33,8 @@ if "parameters" in locals():
 if "radial_porosity" in locals():
     importlib.reload(radial_porosity)
 
-print("Welcome to the generator")    
-print("Initializing the parameter ...")
+print("Welcome to the generator")   
+print("Initializing the parameters ...")
 #Geometry input parameters
 
 Particle_type = str()
@@ -60,6 +57,7 @@ else:
 
 #generating the particles and filling up the tube
 print("Filling up the bed....")
+print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations) 
 simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
 
 bpy.ops.object.select_by_type( type = 'MESH')
