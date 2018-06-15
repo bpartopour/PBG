@@ -9,10 +9,9 @@ Input parameters should be adjusted in [parameters.py](https://github.com/bparto
 Make sure the file paths are set to desired directory. 
 In online version only a few particle shapes are available. To access other shapes please contact me. 
 
-Download all the files and place all except [empty.blend](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [PBG.py](https://github.com/bpartopour/PBG/blob/master/empty.blend) in:  
-  Blender/Contents/Resources/2.78/scripts/modules.  
+All files must be kept in the same directory as [pbg.py](https://github.com/bpartopour/PBG/blob/master/pbg.py). However, this multiple instances of [pbg.py](https://github.com/bpartopour/PBG/blob/master/pbg.py). can be run by copying the whole directory.
   
-Place [empty.blend](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [PBG.py](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [Capping.py](https://github.com/bpartopour/PBG/blob/master/Capping.py) in your working directory.   
+Place [empty.blend](https://github.com/bpartopour/PBG/blob/master/empty.blend) and [PBG.py](https://github.com/bpartopour/PBG/blob/master/pbg.py) and [Capping.py](https://github.com/bpartopour/PBG/blob/master/Capping.py) in your working directory.   
 
 To run the simulation in Console/Terminal (Win or Mac):   
   Make sure you are in the right directory  
