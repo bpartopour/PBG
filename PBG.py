@@ -9,8 +9,16 @@ print('*******************************************',"\n"
       '*********************************************'
 )
 #Main Program
-import bpy 
+
+import sys
+import os
+CurrentDir = os.getcwd()	#get directory in which PBG.py is stored
+sys.path.append(CurrentDir) #Add filepath to system path
+print(CurrentDir, "added to system path.") #Report to user
+
 import parameters
+
+import bpy 
 import importlib
 from radial_voidage import radial_voidage
 from Rigidbody_generator import tube_generation
@@ -25,8 +33,8 @@ if "parameters" in locals():
 if "radial_porosity" in locals():
     importlib.reload(radial_porosity)
 
-print("Welcome to the generator")    
-print("Initializing the parameter ...")
+print("Welcome to the generator")   
+print("Initializing the parameters ...")
 #Geometry input parameters
 
 Particle_type = str()
@@ -49,10 +57,11 @@ else:
 
 #generating the particles and filling up the tube
 print("Filling up the bed....")
+print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations) 
 simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
 
 bpy.ops.object.select_by_type( type = 'MESH')
-#continueing the simulation till steady-state (condition: max particle velocity < 0.01)
+#continuing the simulation till steady-state (condition: max particle velocity < 0.01)
 print("Reaching the steady_state condition")
 distance=steady_state(simulation_current_frame)
 bpy.ops.object.select_all(action = 'TOGGLE')#removing the container
@@ -63,13 +72,13 @@ if parameters.remove_the_tube == True:
 #Do we want to get the angle distribution? if so, in parameters.py set the angle_dist to True
 
 if parameters.angle_dist == True:
-    print("Calculating the particles angle distributiions in the bed...")
+    print("Calculating the particles angle distributions in the bed...")
     bpy.ops.object.select_by_type( type = 'MESH')
     file_name = parameters.file_name
     angle_distribution(file_name)
     
     
-#Saving the blender file to have the packing with seperated particles
+#Saving the blender file to have the packing with separated particles
 print("Saving a copy of the packing...")
 bpy.ops.wm.save_as_mainfile(filepath = parameters.blender_file_path)
     
